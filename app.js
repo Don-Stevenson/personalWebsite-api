@@ -17,8 +17,7 @@ app.get("/api", (request, response, next) => {
 });
 app.listen(PORT, "0.0.0.0");
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-console.log("api key is", process.env.SENDGRID_API_KEY);
+// testing out sgMail
 const msg = {
   to: "dsteven1@gmail.com",
   from: "test@example.com",
@@ -26,6 +25,18 @@ const msg = {
   text: "and easy to do anywhere, even with Node.js",
   html: "<strong>and easy to do anywhere, even with Node.js</strong>"
 };
+
+async function sendMessage() {
+  try {
+    console.log("api key is", process.env.SENDGRID_API_KEY);
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    await sgMail.send(msg);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+console.log(sendMessage());
 
 app.use(bodyParser.json());
 
