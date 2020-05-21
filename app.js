@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const sendGrid = require("@sendgrid/mail");
+const PORT = 3030;
 
 app.use(bodyParser.json());
 
@@ -21,9 +22,13 @@ app.use((request, response, next) => {
   next();
 });
 
-const PORT = 3030;
+
 // to check server is working
 app.get("/api", (request, response, next) => {
   response.send(`API Status: Running on ${PORT}`);
 });
 app.listen(PORT, "0.0.0.0");
+
+app.post('/api/email', (request,response,next)=>{
+    sendGrid.setApiKey('')
+})
