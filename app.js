@@ -2,8 +2,20 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const sendGrid = require("@sendgrid/mail");
+const sgMail = require("@sendgrid/mail");
 const PORT = 3030;
+// sendGrid.setApiKey(process.env.SENDGRID_API_KEY);
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const msg = {
+  to: 'dsteven1@gmail.com.com',
+  from: 'test@example.com',
+  subject: 'Sending with Twilio SendGrid is Fun',
+  text: 'and easy to do anywhere, even with Node.js',
+  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+};
+sgMail.send(msg);
+
 
 app.use(bodyParser.json());
 
@@ -30,5 +42,5 @@ app.get("/api", (request, response, next) => {
 app.listen(PORT, "0.0.0.0");
 
 app.post('/api/email', (request,response,next)=>{
-    sendGrid.setApiKey('')
+    sendGrid.setApiKey('SENDGRID_API_KEY')
 })
