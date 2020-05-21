@@ -8,7 +8,7 @@ const dotenv = require("dotenv");
 // setup dotenv options
 
 dotenv.config({
-    path: "./.env"
+  path: "./.env"
 });
 
 app.use(bodyParser.json());
@@ -42,7 +42,6 @@ async function sendMessage() {
 
 console.log(sendMessage());
 
-
 app.use((request, response, next) => {
   response.setHeader("Acess-Control-Allow-Origin", "*");
   response.setHeader(
@@ -57,8 +56,8 @@ app.use((request, response, next) => {
 });
 
 app.post("/api/email", (request, response, next) => {
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   console.log("api key is", process.env.SENDGRID_API_KEY);
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   sgMail.send(msg);
   response.send(`msg sent: ${msg.to}`);
 });
