@@ -4,6 +4,12 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const sgMail = require("@sendgrid/mail");
 const PORT = 3030;
+const dotenv = require("dotenv");
+// setup dotenv options
+
+dotenv.config({
+  path: "./.env"
+});
 
 // to check server is working
 app.get("/api", (request, response, next) => {
@@ -41,6 +47,6 @@ app.use((request, response, next) => {
 app.post("/api/email", (request, response, next) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   console.log("api key is", process.env.SENDGRID_API_KEY);
-  sgMail.send(msg)
-  response.send(`msg sent: ${msg.to}`)
+  sgMail.send(msg);
+  response.send(`msg sent: ${msg.to}`);
 });
