@@ -1,15 +1,19 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const cors = require("cors");
+const Cors = require("cors");
 const sgMail = require("@sendgrid/mail");
 const PORT = 3030;
 const dotenv = require("dotenv");
 // setup dotenv options
 
 dotenv.config({
-  path: "./.env"
+    path: "./.env"
 });
+
+app.use(bodyParser.json());
+
+app.use(Cors());
 
 // to check server is working
 app.get("/api", (request, response, next) => {
@@ -38,9 +42,6 @@ async function sendMessage() {
 
 console.log(sendMessage());
 
-app.use(bodyParser.json());
-
-app.use(cors());
 
 app.use((request, response, next) => {
   response.setHeader("Acess-Control-Allow-Origin", "*");
