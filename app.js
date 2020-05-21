@@ -5,6 +5,12 @@ const cors = require("cors");
 const sgMail = require("@sendgrid/mail");
 const PORT = 3030;
 
+// to check server is working
+app.get("/api", (request, response, next) => {
+  response.send(`API Status: Running on ${PORT}`);
+});
+app.listen(PORT, "0.0.0.0");
+
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 console.log("api key is", process.env.SENDGRID_API_KEY);
 const msg = {
@@ -32,15 +38,9 @@ app.use((request, response, next) => {
   next();
 });
 
-// to check server is working
-app.get("/api", (request, response, next) => {
-  response.send(`API Status: Running on ${PORT}`);
-});
-app.listen(PORT, "0.0.0.0");
-
 app.post("/api/email", (request, response, next) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   console.log("api key is", process.env.SENDGRID_API_KEY);
   sgMail.send(msg)
-  response.send(`msg sent: ${msg}`)
+  response.send(`msg sent: ${msg.to}`)
 });
