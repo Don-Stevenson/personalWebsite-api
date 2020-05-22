@@ -22,24 +22,24 @@ app.get("/api", (request, response, next) => {
 app.listen(PORT, "0.0.0.0");
 
 // testing out sgMail
-const msg = {
-  to: "dsteven1@gmail.com",
-  from: request.body.email,
-  subject: "Contact from website",
-  text: request.body.message
-};
+// const msg = {
+//   to: "dsteven1@gmail.com",
+//   from: request.body.email,
+//   subject: "Contact from website",
+//   text: request.body.message
+// };
 
-async function sendMessage() {
-  try {
-    console.log("api key is", process.env.SENDGRID_API_KEY);
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-    await sgMail.send(msg);
-  } catch (err) {
-    console.log(err);
-  }
-}
+// async function sendMessage() {
+//   try {
+//     console.log("api key is", process.env.SENDGRID_API_KEY);
+//     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+//     await sgMail.send(msg);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }
 
-console.log(sendMessage());
+// console.log(sendMessage());
 
 app.use((request, response, next) => {
   response.setHeader("Acess-Control-Allow-Origin", "*");
@@ -65,9 +65,9 @@ app.post("/api/email", (request, response, next) => {
   //************************************************ */
   const msg = {
     to: "dsteven1@gmail.com",
-    from: request.body.email,
+    from: 'don',
     subject: "Contact from website",
-    text: request.body.message
+    text: 'hello'
   };
 
   //sending the email and catching any errors
