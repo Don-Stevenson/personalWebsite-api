@@ -24,10 +24,9 @@ app.listen(PORT, "0.0.0.0");
 // testing out sgMail
 const msg = {
   to: "dsteven1@gmail.com",
-  from: "test@example.com",
-  subject: "Sending with Twilio SendGrid is Fun",
-  text: "and easy to do anywhere, even with Node.js",
-  html: "<strong>and easy to do anywhere, even with Node.js</strong>"
+  from: request.body.email,
+  subject: "Contact from website",
+  text: request.body.message
 };
 
 async function sendMessage() {
@@ -57,7 +56,30 @@ app.use((request, response, next) => {
 
 app.post("/api/email", (request, response, next) => {
   console.log("api key is", process.env.SENDGRID_API_KEY);
+  
+  //sets the apikey
+  //************* */
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  sgMail.send(msg);
-  response.send(`msg sent: ${msg.to}`);
+  
+  //the message setup from the input fields of website
+  //************************************************ */
+  const msg = {
+    to: "dsteven1@gmail.com",
+    from: request.body.email,
+    subject: "Contact from website",
+    text: request.body.message
+  };
+
+  //sending the email and catching any errors
+  //**************************************** */
+  sgMail
+    .send(msg)
+    .then(result => {
+      response.status(200).json({
+        success: true
+      });
+    })
+    .catch(err => {
+      console.log("error is: ", err);
+    });
 });
