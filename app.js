@@ -56,11 +56,11 @@ app.use((request, response, next) => {
 
 app.post("/api/email", (request, response, next) => {
   console.log("api key is", process.env.SENDGRID_API_KEY);
-  
+
   //sets the apikey
   //************* */
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  
+
   //the message setup from the input fields of website
   //************************************************ */
   const msg = {
@@ -81,5 +81,8 @@ app.post("/api/email", (request, response, next) => {
     })
     .catch(err => {
       console.log("error is: ", err);
+      response.status(401).json({
+        success: false
+      });
     });
 });
