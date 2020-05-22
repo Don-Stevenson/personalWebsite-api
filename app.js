@@ -65,24 +65,40 @@ app.post("/api/email", (request, response, next) => {
   //************************************************ */
   const msg = {
     to: "dsteven1@gmail.com",
-    from: 'Your\'re website',
+    from: "Your're website",
     subject: "Contact from website",
-    text: 'hello'
+    text: "hello"
   };
 
   //sending the email and catching any errors
   //**************************************** */
-  sgMail
-    .send(msg)
-    .then(result => {
+  async function sendMessage() {
+    try {
+      await sgMail.send(msg);
       response.status(200).json({
         success: true
       });
-    })
-    .catch(err => {
+    } catch (error) {
       console.log("error is: ", err);
       response.status(401).json({
         success: false
       });
-    });
+    }
+  }
+
+  sendMessage()
+
+//   sgMail
+//     .send(msg)
+//     .then(result => {
+//       response.status(200).json({
+//         success: true
+//       });
+//     })
+//     .catch(err => {
+//       console.log("error is: ", err);
+//       response.status(401).json({
+//         success: false
+//       });
+    // });
 });
