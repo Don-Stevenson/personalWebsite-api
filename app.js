@@ -55,17 +55,17 @@ app.use((request, response, next) => {
 });
 
 app.post("/api/email", (request, response, next) => {
-  console.log("api key is", process.env.SENDGRID_API_KEY);
+  console.log("api key is", process.env.SENDGRID_API_KEY2);
 
   //sets the apikey
   //************* */
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY2);
 
   //the message setup from the input fields of website
   //************************************************ */
   const msg = {
     to: "dsteven1@gmail.com",
-    from: 'don',
+    from: 'Your\'re website',
     subject: "Contact from website",
     text: 'hello'
   };
