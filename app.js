@@ -19,8 +19,9 @@ app.use(Cors());
 app.get("/api", (request, response, next) => {
   response.send(`API Status: Running on ${PORT}`);
 });
-app.listen(PORT, "0.0.0.0");
-
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`App listening on port ${PORT}!`);
+});
 // testing out sgMail
 // const msg = {
 //   to: "dsteven1@gmail.com",
@@ -73,7 +74,7 @@ app.post("/api/email", (request, response, next) => {
   //sending the email and catching any errors
   //**************************************** */
   // trying with async await
-  
+
   async function sendMessage() {
     try {
       await sgMail.send(msg);
@@ -88,20 +89,20 @@ app.post("/api/email", (request, response, next) => {
     }
   }
 
-  sendMessage()
+  sendMessage();
 
   // trying with promises
-//   sgMail
-//     .send(msg)
-//     .then(result => {
-//       response.status(200).json({
-//         success: true
-//       });
-//     })
-//     .catch(err => {
-//       console.log("error is: ", err);
-//       response.status(401).json({
-//         success: false
-//       });
-    // });
+  //   sgMail
+  //     .send(msg)
+  //     .then(result => {
+  //       response.status(200).json({
+  //         success: true
+  //       });
+  //     })
+  //     .catch(err => {
+  //       console.log("error is: ", err);
+  //       response.status(401).json({
+  //         success: false
+  //       });
+  // });
 });
