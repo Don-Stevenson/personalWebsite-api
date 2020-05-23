@@ -69,7 +69,7 @@ app.post("/api/email", (request, response, next) => {
     to: "dsteven1@gmail.com",
     from: "dsteven1@gmail.com",
     subject: request.body.email,
-    text: "hello"
+    text: request.body.text
   };
 
   //sending the email and catching any errors
