@@ -72,6 +72,8 @@ app.post("/api/email", (request, response, next) => {
 
   //sending the email and catching any errors
   //**************************************** */
+  // trying with async await
+  
   async function sendMessage() {
     try {
       await sgMail.send(msg);
@@ -88,6 +90,7 @@ app.post("/api/email", (request, response, next) => {
 
   sendMessage()
 
+  // trying with promises
 //   sgMail
 //     .send(msg)
 //     .then(result => {
