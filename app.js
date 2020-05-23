@@ -5,8 +5,8 @@ const Cors = require("cors");
 const sgMail = require("@sendgrid/mail");
 const PORT = 3030;
 const dotenv = require("dotenv");
-// setup dotenv options
 
+// setup dotenv options
 dotenv.config({
   path: "./.env"
 });
@@ -66,7 +66,7 @@ app.post("/api/email", (request, response, next) => {
   //************************************************ */
   const msg = {
     to: "dsteven1@gmail.com",
-    from: "Your website",
+    from: "dsteven1@gmail.com",
     subject: "Contact from website",
     text: "hello"
   };
@@ -76,6 +76,7 @@ app.post("/api/email", (request, response, next) => {
   // trying with async await
 
   async function sendMessage() {
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY2);
     try {
       await sgMail.send(msg);
       response.status(200).json({
