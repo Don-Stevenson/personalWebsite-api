@@ -55,7 +55,7 @@ app.use((request, response, next) => {
   next();
 });
 
-app.post("/api/email", (request, response, next) => {
+app.get("/api/email", (request, response, next) => {
   console.log("api key is", process.env.SENDGRID_API_KEY2);
 
   //sets the apikey
@@ -66,7 +66,7 @@ app.post("/api/email", (request, response, next) => {
   //************************************************ */
   const msg = {
     to: "dsteven1@gmail.com",
-    from: "Your're website",
+    from: "Your website",
     subject: "Contact from website",
     text: "hello"
   };
@@ -82,7 +82,7 @@ app.post("/api/email", (request, response, next) => {
         success: true
       });
     } catch (error) {
-      console.log("error is: ", err);
+      console.log("error is: ", error);
       response.status(401).json({
         success: false
       });
