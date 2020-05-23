@@ -55,7 +55,7 @@ app.use((request, response, next) => {
   next();
 });
 
-app.get("/api/email", (request, response, next) => {
+app.post("/api/email", (request, response, next) => {
   console.log("api key is", process.env.SENDGRID_API_KEY2);
 
   //sets the apikey
