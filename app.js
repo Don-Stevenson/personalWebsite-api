@@ -77,18 +77,4 @@ app.post("/api/email", (request, response, next) => {
 
   sendMessage();
 
-  // trying with promises
-  //   sgMail
-  //     .send(msg)
-  //     .then(result => {
-  //       response.status(200).json({
-  //         success: true
-  //       });
-  //     })
-  //     .catch(err => {
-  //       console.log("error is: ", err);
-  //       response.status(401).json({
-  //         success: false
-  //       });
-  // });
 });
