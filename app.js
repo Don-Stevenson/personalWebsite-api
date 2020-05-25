@@ -8,11 +8,11 @@ const dotenv = require("dotenv");
 
 // setup dotenv options
 dotenv.config({
-  path: "./.env"
+    path: "./.env"
 });
 
+// app configurations
 app.use(bodyParser.json());
-
 app.use(Cors());
 
 // to check server is working
