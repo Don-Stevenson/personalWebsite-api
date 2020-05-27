@@ -40,8 +40,7 @@ app.use((request, response, next) => {
 });
 
 app.post("/api/email", (request, response, next) => {
-  console.log("api key is", process.env.SENDGRID_API_KEY2);
-
+  
   //sets the apikey
   //************* */
   sgMail.setApiKey(process.env.SENDGRID_API_KEY2);
@@ -53,7 +52,8 @@ app.post("/api/email", (request, response, next) => {
     to: "dsteven1@gmail.com",
     from: "dsteven1@gmail.com",
     subject: `personal website email from ${request.body.email}`,
-    text: request.body.message
+    text: `${request.body.message} 
+          sent from ${request.body.email}`
   };
 
   //sending the email and catching any errors
