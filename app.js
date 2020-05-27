@@ -52,8 +52,8 @@ app.post("/api/email", (request, response, next) => {
   const msg = {
     to: "dsteven1@gmail.com",
     from: "dsteven1@gmail.com",
-    subject: request.body.email,
-    text: request.body.text
+    subject: `personal website email from ${request.body.email}`,
+    text: request.body.message
   };
 
   //sending the email and catching any errors
