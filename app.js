@@ -44,13 +44,14 @@ app.post("/api/email", (request, response, next) => {
   //sets the apikey
   //************* */
   sgMail.setApiKey(process.env.SENDGRID_API_KEY2);
+  let myEmail = process.env.MY_EMAIL
 
   //the message setup from the input fields of website- so as not error out twillio
   // make the default email my own, put the users email in the subject
   //************************************************ */
   const msg = {
-    to: "dsteven1@gmail.com",
-    from: "dsteven1@gmail.com",
+    to: myEmail,
+    from: myEmail,
     subject: `personal website email from ${request.body.email}`,
     text: `${request.body.message} 
           sent from ${request.body.email}`
