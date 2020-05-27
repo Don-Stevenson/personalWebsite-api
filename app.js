@@ -54,7 +54,7 @@ app.post("/api/email", (request, response, next) => {
     from: myEmail,
     subject: `personal website email from ${request.body.email}`,
     text: `${request.body.message} 
-          sent from ${request.body.email}`
+          reply to ${request.body.email}`
   };
 
   //sending the email and catching any errors
