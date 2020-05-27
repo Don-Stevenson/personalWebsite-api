@@ -77,5 +77,6 @@ app.post("/api/email", (request, response, next) => {
   }
 
   sendMessage();
+  console.log('Message is : ', msg)
 
 });
