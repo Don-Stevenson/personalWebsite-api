@@ -79,8 +79,8 @@ app.post("/api/email", (request, response, next) => {
       });
     }
   }
-  //Console log a message for development purposes
-  // ///**********************/
-  // sendMessage();
-  // console.log("Message is : ", msg);
+  //Console log the message for development purposes
+  //**********************************************/
+  sendMessage();
+  console.log("Message is : ", msg);
 });
