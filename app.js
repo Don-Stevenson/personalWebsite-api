@@ -62,7 +62,7 @@ app.post("/api/email", (request, response, next) => {
 
   //sending the email and catching any errors
   //**************************************** */
-  // trying with async await
+  // updated with async await
 
   async function sendMessage() {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY2);
