@@ -7,11 +7,13 @@ const PORT = 3030;
 const dotenv = require("dotenv");
 
 // setup dotenv options
+/**********************/
 dotenv.config({
-    path: "./.env"
+  path: "./.env"
 });
 
 // app configurations
+//**********************/
 app.use(bodyParser.json());
 app.use(Cors());
 
@@ -25,7 +27,7 @@ app.listen(PORT, "0.0.0.0", () => {
 });
 
 // configure app
-//*************** */
+//**************/
 app.use((request, response, next) => {
   response.setHeader("Acess-Control-Allow-Origin", "*");
   response.setHeader(
@@ -40,14 +42,13 @@ app.use((request, response, next) => {
 });
 
 app.post("/api/email", (request, response, next) => {
-  
   //sets the apikey
   //************* */
   sgMail.setApiKey(process.env.SENDGRID_API_KEY2);
 
   // bring in my email from the.env file
   //***********************************/
-  let myEmail = process.env.MY_EMAIL
+  let myEmail = process.env.MY_EMAIL;
 
   //the message setup from the input fields of website- so as not error out twillio
   // make the default email my own, put the users email in the subject and in the text as reply to
@@ -61,7 +62,7 @@ app.post("/api/email", (request, response, next) => {
   };
 
   //sending the email and catching any errors
-  //**************************************** */
+  //*****************************************/
   // updated with async await
 
   async function sendMessage() {
@@ -78,8 +79,8 @@ app.post("/api/email", (request, response, next) => {
       });
     }
   }
-
-  sendMessage();
-  console.log('Message is : ', msg)
-
+  //Console log a message for development purposes
+  // ///**********************/
+  // sendMessage();
+  // console.log("Message is : ", msg);
 });
