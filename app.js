@@ -15,8 +15,8 @@ dotenv.config({
 app.use(bodyParser.json());
 app.use(Cors());
 
-// to check server is working
-//************************* */
+// to check that the server is working
+//***********************************/
 app.get("/api", (request, response, next) => {
   response.send(`API Status: Running on ${PORT}`);
 });
