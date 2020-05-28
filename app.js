@@ -22,7 +22,7 @@ app.use(Cors());
 app.get("/api", (request, response, next) => {
   response.send(`API Status: Running on ${PORT}`);
 });
-app.listen(PORT, "0.0.0.0", () => {
+app.listen(process.env.PORT || 3000,  () => {
   console.log(`App listening on port ${PORT}!`);
 });
 
