@@ -22,7 +22,7 @@ app.use(Cors());
 app.get("/api", (request, response, next) => {
   response.send(`API Status: Running on ${PORT}`);
 });
-app.listen(process.env.PORT || 3000,  () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log(`App listening on port ${PORT}!`);
 });
 
@@ -56,9 +56,10 @@ app.post("/api/email", (request, response, next) => {
   const msg = {
     to: myEmail,
     from: myEmail,
-    subject: `personal website email from ${request.body.email}`,
-    text: `${request.body.message} 
-          reply to ${request.body.email}`
+    subject: `personal website email from ${request.body.name} email: ${request.body.email}`,
+    text: ` name: ${request.body.name}
+    message: ${request.body.message} 
+    reply to ${request.body.email}`
   };
 
   //sending the email and catching any errors
