@@ -56,8 +56,8 @@ app.post("/api/email", (request, response, next) => {
   const msg = {
     to: myEmail,
     from: myEmail,
-    subject: `personal website email from ${request.body.name} email: ${request.body.email}`,
-    text: ` name: ${request.body.name}
+    subject: `personal website email from ${request.body.name} email is ${request.body.email}`,
+    text: `name: ${request.body.name}
     message: ${request.body.message} 
     reply to ${request.body.email}`
   };
