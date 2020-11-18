@@ -74,7 +74,7 @@ app.post("/api/email", (request, response, next) => {
         success: true,
       });
     } catch (error) {
-      console.log("error is: ", error);
+      console.error("error is: ", error);
       response.status(401).json({
         success: false,
       });
