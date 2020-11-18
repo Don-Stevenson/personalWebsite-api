@@ -7,18 +7,18 @@ const PORT = 3030;
 const dotenv = require("dotenv");
 
 // setup dotenv options
-/**********************/
+// ********************
 dotenv.config({
-  path: "./.env"
+  path: "./.env",
 });
 
 // app configurations
-//**********************/
+// ******************
 app.use(bodyParser.json());
 app.use(Cors());
 
 // to check that the server is working
-//***********************************/
+// ***********************************
 app.get("/api", (request, response, next) => {
   response.send(`API Status: Running on ${PORT}`);
 });
@@ -27,7 +27,7 @@ app.listen(process.env.PORT || 3000, () => {
 });
 
 // configure app
-//**************/
+// *************
 app.use((request, response, next) => {
   response.setHeader("Acess-Control-Allow-Origin", "*");
   response.setHeader(
@@ -42,28 +42,28 @@ app.use((request, response, next) => {
 });
 
 app.post("/api/email", (request, response, next) => {
-  //sets the apikey
-  //************* */
+  // sets the apikey
+  // ***************
   sgMail.setApiKey(process.env.SENDGRID_API_KEY2);
 
   // bring in my email from the.env file
-  //***********************************/
+  // ***********************************
   let myEmail = process.env.MY_EMAIL;
 
-  //the message setup from the input fields of website- so as not error out twillio
+  // the message setup from the input fields of website- so as not error out twillio
   // make the default email my own, put the users email in the subject and in the text as reply to
-  //**********************************************************************************************/
+  // *********************************************************************************************
   const msg = {
     to: myEmail,
     from: myEmail,
     subject: `personal website email from ${request.body.name} email is ${request.body.email}`,
     text: `name: ${request.body.name}
     message: ${request.body.message} 
-    reply to ${request.body.email}`
+    reply to ${request.body.email}`,
   };
 
-  //sending the email and catching any errors
-  //*****************************************/
+  // sending the email and catching any errors
+  // *****************************************
   // updated with async await
 
   async function sendMessage() {
@@ -71,17 +71,17 @@ app.post("/api/email", (request, response, next) => {
     try {
       await sgMail.send(msg);
       response.status(200).json({
-        success: true
+        success: true,
       });
     } catch (error) {
       console.log("error is: ", error);
       response.status(401).json({
-        success: false
+        success: false,
       });
     }
   }
-  //Console log the message for development purposes
-  //**********************************************/
+  // Console log the message for development purposes
+  // ************************************************
   sendMessage();
   console.log("Message is : ", msg);
 });
