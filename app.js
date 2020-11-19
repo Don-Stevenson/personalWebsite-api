@@ -51,7 +51,7 @@ app.post("/api/email", (request, response, next) => {
   const myEmail = process.env.MY_EMAIL;
 
   // message setup from the input fields of website- so as not error out twillio
-  // make the default email my own, put the users email in the subject and in the 
+  // make the default email my own, put the users email in the subject and in the
   // text as reply to
   // ****************************************************************************
   const msg = {
