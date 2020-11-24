@@ -67,7 +67,7 @@ app.post("/api/email", (request, response, next) => {
   // *****************************************
   // updated with async await
 
-  async function sendMessage() {
+  const sendMessage = async () => {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY2);
     try {
       await sgMail.send(msg);
@@ -80,7 +80,7 @@ app.post("/api/email", (request, response, next) => {
         success: false,
       });
     }
-  }
+  };
   // Console log the message for development purposes
   // ************************************************
   sendMessage();
