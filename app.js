@@ -42,6 +42,7 @@ app.use((request, response, next) => {
 });
 
 app.get("/api/email", (request, response, next) => {
+  response.send(`Here in api/email`);
   // sets the apikey
   // ***************
   console.log("here in api/email")
