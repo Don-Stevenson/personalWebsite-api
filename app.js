@@ -79,6 +79,7 @@ app.get("/api/email", (request, response, next) => {
     } catch (error) {
       console.error("error is: ", error);
       response.status(401).json({
+        "Hello": "hi",
         success: false,
       });
     }
