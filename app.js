@@ -45,7 +45,7 @@ app.get("/api/email", (request, response, next) => {
   response.send(`Here in api/email`);
   // sets the apikey
   // ***************
-  console.log("here in api/email")
+  console.log("here in api/email");
   sgMail.setApiKey(process.env.SENDGRID_API_KEY2);
 
   // bring in my email from the.env file
@@ -79,7 +79,6 @@ app.get("/api/email", (request, response, next) => {
     } catch (error) {
       console.error("error is: ", error);
       response.status(401).json({
-        "Hello": "hi",
         success: false,
       });
     }
