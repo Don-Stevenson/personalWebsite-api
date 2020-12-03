@@ -59,8 +59,11 @@ app.post("/api/email", (request, response, next) => {
     to: myEmail,
     from: myEmail,
     subject: `donstevenson.netlify.app email from ${request.body.name} email address: ${request.body.email}`,
-    text: `name: ${request.body.name}
+    text: 
+   `name: ${request.body.name}
+
     message: ${request.body.message} 
+    
     reply to: ${request.body.email}`,
   };
 
