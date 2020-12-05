@@ -41,7 +41,7 @@ app.use((request, response, next) => {
   next();
 });
 
-app.post("/api/email", (request, response, next) => {
+app.post("/api/email", (request, response) => {
 
   // sets the apikey
   // ***************
