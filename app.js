@@ -84,9 +84,9 @@ app.post("/api/email", (request, response) => {
         success: false,
       });
     }
+    sendMessage();
   };
   // Console log the message for development purposes
   // ************************************************
-  sendMessage();
-  console.log("Message is : ", msg);
+  // console.log("Message is : ", msg);
 });
