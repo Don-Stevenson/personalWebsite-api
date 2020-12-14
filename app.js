@@ -5,18 +5,15 @@ const Cors = require("cors");
 const sgMail = require("@sendgrid/mail");
 const PORT = 3030;
 const dotenv = require("dotenv");
-
 // setup dotenv options
 // ********************
 dotenv.config({
   path: "./.env",
 });
-
 // app configurations
 // ******************
 app.use(bodyParser.json());
 app.use(Cors());
-
 // to check that the server is working
 // ***********************************
 app.get("/api", (request, response, next) => {
@@ -25,7 +22,6 @@ app.get("/api", (request, response, next) => {
 app.listen(process.env.PORT || 3000, () => {
   console.log(`App listening on port ${PORT}!`);
 });
-
 // configure app
 // *************
 app.use((request, response, next) => {
@@ -40,17 +36,13 @@ app.use((request, response, next) => {
   );
   next();
 });
-
-app.post("/api/email", (request, response) => {
-
+app.post("/api/email", (request, response, next) => {
   // sets the apikey
   // ***************
   sgMail.setApiKey(process.env.SENDGRID_API_KEY2);
-
   // bring in my email from the.env file
   // ***********************************
   const myEmail = process.env.MY_EMAIL;
-
   // message setup from the input fields of website- so as not error out twillio
   // make the default email my own, put the users email in the subject and in the
   // text as reply to
@@ -61,16 +53,12 @@ app.post("/api/email", (request, response) => {
     subject: `donstevenson.netlify.app email from ${request.body.name}`,
     text: 
    `    message from: ${request.body.name}
-
     message: ${request.body.message} 
-
     reply to: ${request.body.email}`,
   };
-
   // sending the email and catching any errors
   // *****************************************
   // updated with async await
-
   const sendMessage = async () => {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY2);
     try {
@@ -84,9 +72,9 @@ app.post("/api/email", (request, response) => {
         success: false,
       });
     }
-    sendMessage();
   };
   // Console log the message for development purposes
   // ************************************************
-  // console.log("Message is : ", msg);
+  sendMessage();
+  console.log("Message is : ", msg);
 });
