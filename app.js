@@ -55,7 +55,7 @@ app.post('/api/email', (request, response, next) => {
     }`,
     text: `    message from: ${
       request.body.name ? request.body.name : 'dsteven1@gmail.com'
-    }}
+    }
 
     message: ${request.body.message ? request.body.message : 'test'}
 
